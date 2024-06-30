@@ -30,7 +30,7 @@ function finalResult() {
 
     let options = parseInt(prompt('Ingresa 1 para continuar. \n Ingrese 2 para salir'));
 
-    if (isNaN(options)) {
+    if (isNaN(options) || options <= 0) {
         alert('Por favor ingresa una opción válida')
     } else if (options === 1) {
         let weight = parseFloat(prompt('Ingresa tu peso en kilogramos, sin puntos ni comas'));
@@ -52,10 +52,8 @@ function finalResult() {
                 resultBMI(weight, height);
             }
         }
-    } else if (options === 2) {
-        alert('Hasta luego');
     } else {
-        alert('Por favor ingresa una opción válida');
+        alert('Hasta luego');
     }
 }
 
