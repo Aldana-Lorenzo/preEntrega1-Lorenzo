@@ -1,5 +1,7 @@
 //! Función para calcular el IMC (Índice de Masa Corporal)
 
+alert('Esta es una calculadora para obtener tu IMC (Indice de Masa Corporal)')
+
 function calculateBMI(weight, heightCm) {
     let heightMts = heightCm / 100;
     return weight / (heightMts * heightMts);
@@ -23,23 +25,38 @@ function decimal(numero) {
     return numero.toLocaleString('es-AR', { minimumFractionDigits: 1, maximumFractionDigits: 1 })
 }
 
-let weight = parseFloat(prompt('Ingresa tu peso en kilogramos, sin puntos ni comas'));
+function resultado() {
+    alert('Para obtener el resultado necesitaremos tu peso y estatura');
 
-if (isNaN(weight) || weight <= 0) {
-    alert('Ingresa un valor válido');
-} else {
-    let height = parseFloat(prompt('Ingresa tu altura en centímetros, sin puntos ni comas'));
+    let options = parseInt(prompt('Ingresa 1 para continuar. \n Ingrese 2 para salir'));
 
-    if (isNaN(height) || height <= 0) {
-        alert('Ingresa un valor válido');
-    } else {
-        function resultBMI(weight, height) {
-            let bmi = calculateBMI(weight, height);
-            let category = categorieBMI(bmi);
+    if (isNaN(options)) {
+        alert('Por favor ingresa una opción válida')
+    } else if (options === 1) {
+        let weight = parseFloat(prompt('Ingresa tu peso en kilogramos, sin puntos ni comas'));
 
-            alert(`Tu IMC es ${decimal(bmi)}, lo que indica que tienes ${category}`);
+        if (isNaN(weight) || weight <= 0) {
+            alert('Ingresa un valor válido');
+        } else {
+            let height = parseFloat(prompt('Ingresa tu altura en centímetros, sin puntos ni comas'));
+
+            if (isNaN(height) || height <= 0) {
+                alert('Ingresa un valor válido');
+            } else {
+                function resultBMI(weight, height) {
+                    let bmi = calculateBMI(weight, height);
+                    let category = categorieBMI(bmi);
+
+                    alert(`Tu IMC es ${decimal(bmi)}, lo que indica que tienes ${category}`);
+                }
+                resultBMI(weight, height);
+            }
         }
+    } else if (options === 2) {
+        alert('Hasta luego');
+    } else {
+        alert('Por favor ingresa una opción válida');
     }
-
-    resultBMI(weight, height);
 }
+
+resultado();
